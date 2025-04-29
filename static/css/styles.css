@@ -1,0 +1,141 @@
+/* Estilos principales para la aplicación web del escáner de vulnerabilidades */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #4361ee;
+    border-color: #4361ee;
+}
+
+.btn-primary:hover {
+    background-color: #3a56d4;
+    border-color: #3a56d4;
+}
+
+.btn-success {
+    background-color: #38b000;
+    border-color: #38b000;
+}
+
+.btn-success:hover {
+    background-color: #2d9900;
+    border-color: #2d9900;
+}
+
+.logo-container {
+    margin-bottom: 1.5rem;
+}
+
+.logo-container i {
+    color: #4361ee;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+}
+
+header h1 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.vuln-type {
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.vuln-type:hover {
+    background-color: #f1f3f5;
+    transform: translateY(-5px);
+}
+
+.vuln-type i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    padding: 1rem 0;
+    border-top: 1px solid #eaeaea;
+    margin-top: 3rem;
+}
+
+/* Estilos específicos para los resultados */
+.console-line {
+    padding: 3px 0;
+    border-bottom: 1px dotted #e9ecef;
+}
+
+.console-output {
+    background-color: #343a40;
+    color: #f8f9fa;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.risk-high {
+    color: #ff5757;
+    font-weight: bold;
+}
+
+.risk-medium {
+    color: #ffb347;
+    font-weight: bold;
+}
+
+.risk-low {
+    color: #82ca9d;
+}
+
+.risk-unknown {
+    color: #adb5bd;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .vuln-type {
+        margin-bottom: 1rem;
+    }
+    
+    .console-output {
+        height: 300px;
+    }
+}
