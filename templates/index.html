@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escáner de Vulnerabilidades Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-5">
+            <div class="logo-container mb-4">
+                <i class="fas fa-shield-alt fa-4x text-primary"></i>
+            </div>
+            <h1 class="display-4">Escáner de Vulnerabilidades Web</h1>
+            <p class="lead">Analiza aplicaciones web para detectar vulnerabilidades de seguridad</p>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Iniciar Escaneo</h2>
+                        <form action="{{ url_for('start_scan') }}" method="post">
+                            <div class="mb-3">
+                                <label for="url" class="form-label">URL de la aplicación web</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                                    <input type="url" class="form-control" id="url" name="url" 
+                                           placeholder="https://ejemplo.com" required>
+                                </div>
+                                <div class="form-text">Introduce la URL completa incluyendo http:// o https://</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    <i class="fas fa-search me-2"></i> Escanear
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4 shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="text-center mb-0">Vulnerabilidades Analizadas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4 mb-3">
+                                <div class="vuln-type">
+                                    <i class="fas fa-database text-danger mb-2"></i>
+                                    <h5>SQL Injection</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="vuln-type">
+                                    <i class="fas fa-code text-warning mb-2"></i>
+                                    <h5>XSS</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="vuln-type">
+                                    <i class="fas fa-mouse-pointer text-info mb-2"></i>
+                                    <h5>Clickjacking</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="vuln-type">
+                                    <i class="fas fa-lock text-primary mb-2"></i>
+                                    <h5>Security Headers</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="vuln-type">
+                                    <i class="fas fa-random text-success mb-2"></i>
+                                    <h5>Open Redirect</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="vuln-type">
+                                    <i class="fas fa-key text-secondary mb-2"></i>
+                                    <h5>CSRF</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center my-5">
+            <p class="text-muted">Escáner de Vulnerabilidades Web &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
